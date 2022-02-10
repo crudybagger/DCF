@@ -1,0 +1,1 @@
+-g -Wall   -I/usr/include -fno-stack-protector  -DHAVE_PCAP -DXMLPARSER=libxml -DWITH_PARSIM -DWITH_NETBUILDER  -I. -IC:/Users/ASUS/Downloads/Compressed/omnetpp-4.6/include
