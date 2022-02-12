@@ -14,7 +14,7 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(CMDENV_LIBS)
 #USERIF_LIBS = $(TKENV_LIBS)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -I.
+INCLUDE_PATH = -I. -Iresults
 
 # Additional object and library files to link with
 EXTRA_OBJS =
@@ -28,10 +28,11 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS = $O/AP.o $O/User.o
+OBJS = $O/AP.o $O/User.o $O/packet_m.o
 
 # Message files
-MSGFILES =
+MSGFILES = \
+    packet.msg
 
 #------------------------------------------------------------------------------
 
@@ -105,18 +106,24 @@ clean:
 	$(Q)-rm -rf $O
 	$(Q)-rm -f DCF DCF.exe libDCF.so libDCF.a libDCF.dll libDCF.dylib
 	$(Q)-rm -f ./*_m.cc ./*_m.h
+	$(Q)-rm -f results/*_m.cc results/*_m.h
 
 cleanall: clean
 	$(Q)-rm -rf $(PROJECT_OUTPUT_DIR)
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc results/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/AP.o: AP.cc \
 	AP.h \
+	packet_m.h \
 	param.h
 $O/User.o: User.cc \
-	User.h
+	User.h \
+	packet_m.h \
+	param.h
+$O/packet_m.o: packet_m.cc \
+	packet_m.h
 

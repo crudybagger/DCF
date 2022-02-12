@@ -1,4 +1,4 @@
-message packet
+message pack
 { 
     string name;
     double tm;

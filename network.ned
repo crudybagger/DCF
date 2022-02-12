@@ -12,6 +12,16 @@ simple AP
     gates:
         input in;
         output out;
+        input in1;
+        output out1;
+        input in2;
+        output out2;
+        input in3;
+        output out3;
+        input in4;
+        output out4;
+        input in5;
+        output out5;
 }
 network Network
 {
@@ -43,18 +53,18 @@ network Network
         user.out --> ap.in;
         ap.out --> user.in;
         
-		user1.out --> ap.in;
-		ap.out --> user1.in;
+		user1.out --> ap.in1;
+		ap.out1 --> user1.in;
 		
-		user2.out --> ap.in;
-		ap.out --> user2.in;
+		user2.out --> ap.in2;
+		ap.out2 --> user2.in;
 		
-		user3.out --> ap.in;
-		ap.out --> user3.in;
+		user3.out --> ap.in3;
+		ap.out3 --> user3.in;
 		
-		user4.out --> ap.in;
-		ap.out --> user4.in;
+		user4.out --> ap.in4;
+		ap.out4 --> user4.in;
 		
-		user5.out --> ap.in;
-		ap.out --> user5.in;
+		user5.out --> ap.in5;
+		ap.out5 --> user5.in;
 }

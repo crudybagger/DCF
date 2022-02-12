@@ -4,6 +4,8 @@
 class AP : public cSimpleModule {
 public:
     cMessage *cts, *ack;
+    int pkid[1000];
+    int curr;
 
 protected:
     virtual void initialize();
